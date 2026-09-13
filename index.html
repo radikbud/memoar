@@ -7,14 +7,52 @@
 <style>
 /* pdf2html base stylesheet — fixed-layout, faithful page reproduction. */ 
 /* Paksa layout PDF agar otomatis responsif dan fit di HP */
+  <style>
+  /* Reset dasar agar halaman pas di layar HP */
   @media screen and (max-width: 768px) {
-    body {
-      transform: scale(0.85);
-      transform-origin: top left;
-      width: 117.6% !important;
-      overflow-x: hidden !important;
-    }
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #111 !important;
+    overflow-x: hidden !important;
   }
+  
+  .pf {
+    transform: scale(0.55) !important;
+    transform-origin: top center !important;
+    margin: -150px auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    position: relative !important;
+  }
+}
+
+  /* Tombol WhatsApp Melayang */
+  .wa-floating-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25d366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
+  .wa-floating-btn:hover {
+    transform: scale(1.1);
+    background-color: #20ba5a;
+    color: white;
+  }
+</style>
 html, body { margin: 0; padding: 0; }
 body { background: #e8e8e8; }
 
