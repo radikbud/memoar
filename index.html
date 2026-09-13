@@ -5,57 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selesai: Memoar Sirosis Mantan Aktivis</title>
     
-    <!-- CSS untuk Styling Daftar Isi & Tombol WA Melayang -->
     <style>
+      /* --- Pengaturan Dasar & Nuansa Buku --- */
+      html {
+        scroll-behavior: smooth; /* Efek meluncur mulus saat daftar isi diklik */
+      }
       body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
+        font-family: 'Georgia', 'Times New Roman', serif; /* Font klasik bernuansa buku */
+        line-height: 1.8;
         margin: 0;
-        padding: 20px;
-        background-color: #f4f4f9;
-        color: #333;
+        padding: 0;
+        background-color: #f4f1ea; /* Latar belakang warna kertas buku (krem sangat muda) */
+        color: #2c2c2c;
       }
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        background: #fff;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      .book-container {
+        max-width: 750px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 50px;
+        border-radius: 4px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
       }
-      h1 {
+      h1.book-title {
         text-align: center;
-        color: #222;
+        font-size: 2.5em;
+        margin-bottom: 5px;
+        letter-spacing: 1px;
       }
-      .toc-container {
-        background: #f9f9f9;
-        border: 1px solid #ddd;
-        padding: 20px;
-        margin: 20px 0;
-        border-radius: 8px;
+      .book-subtitle {
+        text-align: center;
+        color: #666;
+        font-style: italic;
+        margin-bottom: 40px;
       }
-      .toc-container h3 {
+
+      /* --- Desain Daftar Isi Buku --- */
+      .toc-wrapper {
+        border-top: 2px solid #2c2c2c;
+        border-bottom: 2px solid #2c2c2c;
+        padding: 30px 0;
+        margin-bottom: 50px;
+      }
+      .toc-wrapper h2 {
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
         margin-top: 0;
-        color: #333;
+        margin-bottom: 20px;
       }
-      .toc-container ul {
-        padding-left: 20px;
-        margin-bottom: 0;
+      .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
       }
-      .toc-container li {
-        margin-bottom: 8px;
-      }
-      .toc-container a {
+      .toc-list a {
         text-decoration: none;
-        color: #0066cc;
+        color: #2c2c2c;
+        transition: color 0.2s ease;
       }
-      .toc-container a:hover {
-        text-decoration: underline;
+      .toc-list a:hover {
+        color: #b33939; /* Warna merah gelap saat disentuh */
       }
+      .toc-part {
+        font-weight: bold;
+        font-size: 1.15em;
+        margin-top: 25px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+      .toc-chapter {
+        margin-top: 6px;
+        padding-left: 20px;
+      }
+      .toc-sub {
+        padding-left: 55px;
+        font-size: 0.95em;
+        font-style: italic;
+        color: #555;
+        margin-top: 4px;
+      }
+
+      /* --- Ruang Konten Bab --- */
       .content-section {
-        margin-top: 40px;
+        padding-top: 60px; /* Jarak atas agar tidak tertutup saat discroll */
+        margin-bottom: 60px;
+        border-bottom: 1px dashed #ddd;
+        min-height: 200px; /* Memberi ruang kosong agar efek scroll terlihat jelas */
       }
-      /* Tombol WhatsApp Melayang */
+      .content-section h2 {
+        font-size: 1.8em;
+        border-left: 4px solid #b33939;
+        padding-left: 15px;
+        margin-bottom: 20px;
+      }
+
+      /* --- Tombol WhatsApp Melayang --- */
       .whatsapp-float {
         position: fixed;
         width: 60px;
@@ -67,62 +111,163 @@
         border-radius: 50px;
         text-align: center;
         font-size: 30px;
-        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
         z-index: 1000;
         display: flex;
         align-items: center;
         justify-content: center;
         text-decoration: none;
-        transition: background-color 0.3s ease;
+        transition: transform 0.3s ease, background-color 0.3s ease;
       }
       .whatsapp-float:hover {
         background-color: #20ba5a;
-        color: #FFF;
+        transform: scale(1.1);
       }
     </style>
-    <!-- FontAwesome untuk ikon WhatsApp -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Selesai: Memoar Sirosis Mantan Aktivis</h1>
-        <p style="text-align: center; color: #666;">Selamat datang di halaman resmi memoar.</p>
+    <div class="book-container">
+        <h1 class="book-title">Selesai</h1>
+        <div class="book-subtitle">Memoar Sirosis Mantan Aktivis</div>
 
-        <!-- Daftar Isi -->
-        <div class="toc-container">
-          <h3>Daftar Isi</h3>
-          <ul>
-            <li><a href="#pengantar">Pengantar</a></li>
-            <li><a href="#bab1">Bab 1: Perjalanan Dimulai</a></li>
-            <li><a href="#bab2">Bab 2: Titik Balik Kehidupan</a></li>
-            <li><a href="#penutup">Penutup</a></li>
-          </ul>
+        <!-- ================= DAFTAR ISI ================= -->
+        <div class="toc-wrapper">
+            <h2>Daftar Isi</h2>
+            <ul class="toc-list">
+                <li class="toc-chapter" style="font-weight:bold;"><a href="#kata-pengantar">Kata Pengantar</a></li>
+                
+                <li class="toc-part">Bagian I: Memoar Pembuka</li>
+                <li class="toc-chapter"><a href="#bab1">Bab 1 — Tamat</a></li>
+                <li class="toc-chapter"><a href="#bab2">Bab 2 — Dahlan dan Sjuman</a></li>
+                <li class="toc-chapter"><a href="#bab3">Bab 3 — Ini Budi</a></li>
+                <li class="toc-chapter"><a href="#bab4">Bab 4 — Purgatory</a></li>
+                <li class="toc-chapter"><a href="#bab5">Bab 5 — Tuhan adalah Waktu</a></li>
+
+                <li class="toc-part">Bagian II: Memoar Sirosis</li>
+                <li class="toc-chapter"><a href="#bab6">Bab 6 — Pengakuan</a></li>
+                <li class="toc-chapter"><a href="#bab7">Bab 7 — Obat Penunda Kematian</a></li>
+                <li class="toc-chapter"><a href="#bab8">Bab 8 — Kronologi Sirosis (Audit Keruntuhan)</a></li>
+                <li class="toc-sub"><a href="#bab8-1">2023 — Titik Nadir 6,1</a></li>
+                <li class="toc-sub"><a href="#bab8-2">2024 — Near Death Experience (NDE)</a></li>
+                <li class="toc-sub"><a href="#bab8-3">2024 — Tahun Pengikatan</a></li>
+                <li class="toc-sub"><a href="#bab8-4">2025 — Ilusi Kemenangan Usia 45</a></li>
+                <li class="toc-sub"><a href="#bab8-5">2026 — Serangan Balik</a></li>
+                <li class="toc-chapter"><a href="#bab9">Bab 9 — Ligasi Kelima</a></li>
+                <li class="toc-sub"><a href="#bab9-1">Bendungan yang Gagal</a></li>
+                <li class="toc-sub"><a href="#bab9-2">Bahasa Bumi dan Bahasa Langit</a></li>
+
+                <li class="toc-part">Bagian III: Memoar Cinta</li>
+                <li class="toc-chapter"><a href="#bab10">Bab 10 — HCU sebagai Ruang Antara</a></li>
+                <li class="toc-chapter"><a href="#bab11">Bab 11 — CPU yang Kelelahan</a></li>
+                <li class="toc-chapter"><a href="#bab12">Bab 12 — Amonia vs Jiwa</a></li>
+                <li class="toc-chapter"><a href="#bab13">Bab 13 — Perang Besar yang Morat-marit</a></li>
+                <li class="toc-chapter"><a href="#bab14">Bab 14 — Mite Sisifus dan Kisah Bayi Ismail</a></li>
+                <li class="toc-chapter"><a href="#bab15">Bab 15 — Konspirasi Kasih Sayang</a></li>
+                <li class="toc-chapter"><a href="#bab16">Bab 16 — Ketika Cinta Menggenapi Nyawa</a></li>
+                <li class="toc-sub"><a href="#bab16-1">Tanazzul: Sinkronisasi Ruh dan Jasad</a></li>
+                <li class="toc-sub"><a href="#bab16-2">Kurir Kehidupan dan Donasi Persahabatan</a></li>
+                <li class="toc-sub"><a href="#bab16-3">Maklumat Cinta di Jam Dhuha</a></li>
+
+                <li class="toc-part">Bagian IV: Memoar Aktivis</li>
+                <li class="toc-chapter"><a href="#bab17">Bab 17 — Dejavu Jarum Suntik</a></li>
+                <li class="toc-chapter"><a href="#bab18">Bab 18 — Sumpah Berdarah di Atas Sajadah</a></li>
+                <li class="toc-chapter"><a href="#bab19">Bab 19 — Menghina HMI dalam Hati</a></li>
+                <li class="toc-chapter"><a href="#bab20">Bab 20 — Selesai dengan HMI</a></li>
+                <li class="toc-chapter"><a href="#bab21">Bab 21 — Shogun dan Samurai yang Patah</a></li>
+                <li class="toc-sub"><a href="#bab21-1">Penyeberangan Pertama: Kelas Lexus</a></li>
+                <li class="toc-sub"><a href="#bab21-2">Penyeberangan Kedua: Kapal Otok-Otok</a></li>
+                <li class="toc-sub"><a href="#bab21-3">Vonis Paling Jujur</a></li>
+                <li class="toc-sub"><a href="#bab21-4">Jalan Ninja</a></li>
+
+                <li class="toc-part">Bagian V: Memoar Penutup</li>
+                <li class="toc-chapter"><a href="#bab22">Bab 22 — Nazar yang Patah</a></li>
+                <li class="toc-chapter"><a href="#bab23">Bab 23 — Wasiat dan Utang-Piutang</a></li>
+                <li class="toc-chapter"><a href="#bab24">Bab 24 — Kepada Istri dan Anakku</a></li>
+                <li class="toc-chapter"><a href="#bab25">Bab 25 — Happy Birthday to Me</a></li>
+                <li class="toc-chapter"><a href="#bab26">Bab 26 — Kepada Anda yang membaca buku ini</a></li>
+                <li class="toc-chapter"><a href="#bab27">Bab 27 — Ditipu AI</a></li>
+
+                <li class="toc-chapter" style="margin-top:20px; font-weight:bold;"><a href="#epilog">Epilog — Segumpal Daging yang Menentukan</a></li>
+                <li class="toc-chapter" style="font-weight:bold;"><a href="#selesai">Selesai</a></li>
+                <li class="toc-chapter" style="font-weight:bold;"><a href="#lampiran">Lampiran — Catatan Medis Ringkas</a></li>
+            </ul>
         </div>
 
-        <!-- Konten / Bab Buku -->
-        <div id="pengantar" class="content-section">
-          <h2>Pengantar</h2>
-          <p>Tulis teks pengantar atau ringkasan buku Anda di sini...</p>
+
+        <!-- ================= ISI KONTEN BUKU ================= -->
+        <!-- Setiap teks di bawah ini akan diakses oleh link di daftar isi.
+             Anda tinggal menempelkan teks panjang buku Anda di bagian `<p>` masing-masing bab -->
+
+        <div id="kata-pengantar" class="content-section">
+            <h2>Kata Pengantar</h2>
+            <p>(Tuliskan isi kata pengantar Anda di sini...)</p>
         </div>
 
         <div id="bab1" class="content-section">
-          <h2>Bab 1: Perjalanan Dimulai</h2>
-          <p>Isi dari Bab 1 dapat dituliskan di bagian ini...</p>
+            <h2>Bab 1 — Tamat</h2>
+            <p>(Tuliskan isi bab di sini...)</p>
         </div>
 
         <div id="bab2" class="content-section">
-          <h2>Bab 2: Titik Balik Kehidupan</h2>
-          <p>Isi dari Bab 2 dapat dituliskan di bagian ini...</p>
+            <h2>Bab 2 — Dahlan dan Sjuman</h2>
+            <p>(Tuliskan isi bab di sini...)</p>
         </div>
 
-        <div id="penutup" class="content-section">
-          <h2>Penutup</h2>
-          <p>Bagian penutup atau kesimpulan memoar...</p>
+        <div id="bab3" class="content-section">
+            <h2>Bab 3 — Ini Budi</h2>
+            <p>(Tuliskan isi bab di sini...)</p>
         </div>
+
+        <div id="bab4" class="content-section">
+            <h2>Bab 4 — Purgatory</h2>
+            <p>(Tuliskan isi bab di sini...)</p>
+        </div>
+
+        <div id="bab5" class="content-section">
+            <h2>Bab 5 — Tuhan adalah Waktu</h2>
+            <p>(Tuliskan isi bab di sini...)</p>
+        </div>
+
+        <div id="bab6" class="content-section">
+            <h2>Bab 6 — Pengakuan</h2>
+            <p>(Tuliskan isi bab di sini...)</p>
+        </div>
+
+        <!-- Saya singkat pembuatan kotaknya agar kode tidak terlalu panjang, 
+             Anda bisa menyalin pola <div id="..."></div> ini untuk bab-bab lainnya (7, 8, dst) 
+             Pastikan ID pada div sama persis dengan yang ada di href daftar isi. -->
+             
+        <div id="bab8" class="content-section">
+            <h2>Bab 8 — Kronologi Sirosis (Audit Keruntuhan)</h2>
+            <p>Pendahuluan Bab 8...</p>
+            
+            <h3 id="bab8-1">2023 — Titik Nadir 6,1</h3>
+            <p>Isi bagian ini...</p>
+
+            <h3 id="bab8-2">2024 — Near Death Experience (NDE)</h3>
+            <p>Isi bagian ini...</p>
+        </div>
+        
+        <div id="epilog" class="content-section">
+            <h2>Epilog — Segumpal Daging yang Menentukan</h2>
+            <p>(Tuliskan epilog di sini...)</p>
+        </div>
+
+        <div id="selesai" class="content-section">
+            <h2>Selesai</h2>
+            <p>(Tuliskan bagian selesai di sini...)</p>
+        </div>
+
+        <div id="lampiran" class="content-section">
+            <h2>Lampiran — Catatan Medis Ringkas</h2>
+            <p>(Tuliskan lampiran di sini...)</p>
+        </div>
+
     </div>
 
-    <!-- Tombol WhatsApp Melayang -->
+    <!-- ================= TOMBOL WA MELAYANG ================= -->
     <a href="https://wa.me/6282261742202?text=Halo,%20saya%20tertarik%20dengan%20Memoar%20Sirosis%20Mantan%20Aktivis." class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Hubungi kami via WhatsApp">
       <i class="fab fa-whatsapp"></i>
     </a>
