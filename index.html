@@ -5,7 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>upload_trmlapm5gbbx5ehxdf23pwybkg.pdf</title>
 <style>
-/* pdf2html base stylesheet — fixed-layout, faithful page reproduction. */
+/* pdf2html base stylesheet — fixed-layout, faithful page reproduction. */ 
+/* Paksa layout PDF agar otomatis responsif dan fit di HP */
+  @media screen and (max-width: 768px) {
+    body {
+      transform: scale(0.85);
+      transform-origin: top left;
+      width: 117.6% !important;
+      overflow-x: hidden !important;
+    }
+  }
 html, body { margin: 0; padding: 0; }
 body { background: #e8e8e8; }
 
